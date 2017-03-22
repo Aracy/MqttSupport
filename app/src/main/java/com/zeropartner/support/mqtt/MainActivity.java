@@ -8,20 +8,16 @@ import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.zeropartner.support.mqtt.AsyncMQTTService;
 import android.zeropartner.support.mqtt.MQTTConstant;
 import android.zeropartner.support.mqtt.MQTTManager;
 
 import com.zeropartner.support.mqtt.example.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private final String TAG = "MainActivity";
 
     private EditText etAccount, etPassword;
 
@@ -75,11 +71,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (TextUtils.equals(action, "mqtt.lost")) {
                 btnStart.setEnabled(true);
                 btnStop.setEnabled(false);
+                btnSendMessage.setEnabled(false);
                 return;
             }
             if (TextUtils.equals(action, "mqtt.connect")) {
                 btnStart.setEnabled(false);
                 btnStop.setEnabled(true);
+                btnSendMessage.setEnabled(true);
                 return;
             }
             String message = intent.getStringExtra(MQTTConstant.BROADCAST_RECEIVER_MESSAGE);
@@ -117,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MQTTManager.getInstance(this)
                 .setClientId("android_support_test") //ClientId
-                .setServerURI("tcp://192.168.1.225:1883") //服务器地址
+                .setServerURI("tcp://192.168.1.248:1883") //服务器地址
                 .setLoginAccount(account, password) //服务器的账号密码
                 .setTopic(new String[]{"support"}) //服务器主题
                 .setRunnableClass(ProcessRunnable.class) //消息处理线程类
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void stopMqtt() {
 
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent("stop"));
+        MQTTManager.getInstance(this).stop();
 
     }
 

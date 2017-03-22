@@ -131,10 +131,9 @@ class MQTTConnection {
             return;
         }
         try {
-            // if (pingSender != null)
-            // {
-            // pingSender.stop();
-            // }
+            if (pingSender != null) {
+                pingSender.stop();
+            }
             mClient.close();
         } catch (MqttException e) {
             e.printStackTrace();
