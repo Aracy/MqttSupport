@@ -1,4 +1,4 @@
-package com.zeropartner.support.mqtt;
+package com.aracy.mqtt.mqtt;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.text.TextUtils;
 /**
  * MQTT消息管理器
  *
- * @author Sun.bl
+ * @author aracy
  * @version [1.0, 2016/9/26]
  */
 public class MQTTManager {
@@ -41,7 +41,7 @@ public class MQTTManager {
      * @return 管理器
      */
     public MQTTManager setClientId(String clientId) {
-        MqttUtil.setClinetId(mContext, clientId);
+        MqttUtil.setClientId(mContext, clientId);
         return this;
     }
 

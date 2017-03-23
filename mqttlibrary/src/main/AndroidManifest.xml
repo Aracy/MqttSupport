@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="android.zeropartner.support.mqtt">
+          package="android.aracy.support.mqtt">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -14,7 +14,7 @@
         >
 
         <service
-            android:name=".AsyncMQTTService"
+            android:name="android.aracy.support.mqtt.AsyncMQTTService"
             android:exported="false"
             />
 

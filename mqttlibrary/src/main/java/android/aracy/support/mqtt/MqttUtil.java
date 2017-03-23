@@ -1,4 +1,4 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,9 @@ import android.net.NetworkInfo;
 import android.text.TextUtils;
 
 /**
- * @author zl.peng
+ *
+ *
+ * @author aracy
  * @version [1.0, 2016-07-04]
  */
 class MqttUtil {
@@ -83,7 +85,7 @@ class MqttUtil {
      * @param clientId MQTT连接标识符
      * @see [类、类#方法、类#成员]
      */
-    static void setClinetId(Context context, String clientId) {
+    static void setClientId(Context context, String clientId) {
         SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences(MQTT_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 

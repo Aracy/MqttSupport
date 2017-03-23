@@ -1,9 +1,9 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 /**
  * MQTT连接常量
  *
- * @author zl.peng
+ * @author aracy
  * @version [1.0, 2016-07-04]
  */
 public class MQTTConstant {
@@ -27,9 +27,13 @@ public class MQTTConstant {
     /**
      * 发布消息的Action
      */
-    public static final String ACTION_MESSAGE_PUBLISH = "com.zeropartner.support.publishMessageAction";
+    public static final String ACTION_MESSAGE_PUBLISH = "com.aracy.support.publishMessageAction";
 
-    public static final String ACTION_MESSAGE_RECEIVE = "com.zeropartner.support.MessageReceived";
+    public static final String ACTION_MESSAGE_RECEIVE = "com.aracy.support.MessageReceived";
+
+    public static final String ACTION_CONNECT_LOST = "com.aracy.support.connect.lost";
+
+    public static final String ACTION_CONNECT_SUCCESS = "com.aracy.support.connect.success";
 
 
 }

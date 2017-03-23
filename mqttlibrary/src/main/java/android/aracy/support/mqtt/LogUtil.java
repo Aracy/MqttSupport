@@ -1,4 +1,4 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -6,10 +6,10 @@ import android.util.Log;
 /***
  * Log的工具类
  *
- * @author Sun.bl
+ * @author aracy
  * @version [1.0, 2016/2/29]
  */
-public class LogUtil {
+ class LogUtil {
 
     static boolean sDebug = true;
 

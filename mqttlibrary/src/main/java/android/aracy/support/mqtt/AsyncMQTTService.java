@@ -1,4 +1,4 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -28,7 +28,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author zl.peng
+ * Message Service
+ *
+ * @author aracy
  * @version [1.0, 2016-07-04]
  */
 public class AsyncMQTTService extends Service implements MqttCallback {
@@ -258,7 +260,7 @@ public class AsyncMQTTService extends Service implements MqttCallback {
         mConnection.disConnect(new IMqttActionListener() {
             @Override
             public void onSuccess(IMqttToken iMqttToken) {
-                LocalBroadcastManager.getInstance(AsyncMQTTService.this).sendBroadcast(new Intent("mqtt.lost"));
+                LocalBroadcastManager.getInstance(AsyncMQTTService.this).sendBroadcast(new Intent(MQTTConstant.ACTION_CONNECT_LOST));
             }
 
             @Override
@@ -341,7 +343,7 @@ public class AsyncMQTTService extends Service implements MqttCallback {
             LogUtil.e(TAG, "MQTT连接失败...");
             e.printStackTrace();
             afterConnectFailed();
-            LocalBroadcastManager.getInstance(AsyncMQTTService.this).sendBroadcast(new Intent("mqtt.lost"));
+            LocalBroadcastManager.getInstance(AsyncMQTTService.this).sendBroadcast(new Intent(MQTTConstant.ACTION_CONNECT_LOST));
         }
 
         @Override
@@ -350,7 +352,7 @@ public class AsyncMQTTService extends Service implements MqttCallback {
             subscribe();
             mMQTTConnectCount = 0;
             connectHandler.removeMessages(MQTT_CONNECT);
-            LocalBroadcastManager.getInstance(AsyncMQTTService.this).sendBroadcast(new Intent("mqtt.connect"));
+            LocalBroadcastManager.getInstance(AsyncMQTTService.this).sendBroadcast(new Intent(MQTTConstant.ACTION_CONNECT_SUCCESS));
         }
     }
 

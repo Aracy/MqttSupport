@@ -1,4 +1,4 @@
-package com.zeropartner.support.mqtt;
+package com.aracy.mqtt.mqtt;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 
 import android.app.Service;
@@ -14,6 +14,9 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 
+/**
+ * MQTT的实例连接类
+ */
 class MQTTConnection {
 
     private static final String TAG = "MQTTConnection";

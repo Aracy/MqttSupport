@@ -28,11 +28,11 @@
 -dontwarn org.eclipse.paho.client.**
 -keep class org.eclipse.paho.client.mqttv3.**{*;}
 
--keep public class android.zeropartner.support.mqtt.BaseRunnable {*;}
+-keep public class android.aracy.support.mqtt.BaseRunnable {*;}
 
--keep public class android.zeropartner.support.mqtt.MQTTConstant {*;}
+-keep public class android.aracy.support.mqtt.MQTTConstant {*;}
 
--keep public class android.zeropartner.support.mqtt.MQTTManager {*;}
+-keep public class android.aracy.support.mqtt.MQTTManager {*;}
 
 -keep class *.R
 

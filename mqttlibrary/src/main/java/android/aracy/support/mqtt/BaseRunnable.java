@@ -1,9 +1,9 @@
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 import android.content.Context;
 
 /**
- * @author zl.peng
+ * @author aracy
  * @version [1.0, 2016-07-05]
  */
 public class BaseRunnable implements Runnable {

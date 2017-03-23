@@ -10,7 +10,7 @@
  * and the Eclipse Distribution License is available at
  * http://www.eclipse.org/org/documents/edl-v10.php.
  */
-package android.zeropartner.support.mqtt;
+package android.aracy.support.mqtt;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
