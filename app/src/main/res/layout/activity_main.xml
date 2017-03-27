@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="com.zeropartner.support.mqtt.MainActivity">
+    tools:context="com.aracy.mqtt.MainActivity">
 
     <EditText
         android:id="@+id/et_account"

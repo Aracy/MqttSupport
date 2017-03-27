@@ -1,5 +1,9 @@
-package com.zeropartner.support.mqtt;
+package com.aracy.mqtt;
 
+import android.app.ActivityManager;
+import android.aracy.support.mqtt.AsyncMQTTService;
+import android.aracy.support.mqtt.MQTTConstant;
+import android.aracy.support.mqtt.MQTTManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +16,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.zeropartner.support.mqtt.MQTTConstant;
-import android.zeropartner.support.mqtt.MQTTManager;
 
-import com.zeropartner.support.mqtt.example.R;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,11 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //初始化管理器
 
         IntentFilter intentFilter = new IntentFilter(MQTTConstant.ACTION_MESSAGE_RECEIVE);
-        intentFilter.addAction("mqtt.lost");
-        intentFilter.addAction("mqtt.connect");
+        intentFilter.addAction(MQTTConstant.ACTION_CONNECT_LOST);
+        intentFilter.addAction(MQTTConstant.ACTION_CONNECT_SUCCESS);
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, intentFilter);
 
         initView();
+
+        initData();
+
     }
 
     private void initView() {
@@ -55,6 +61,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void initData() {
+
+        if (isServiceRunning()) {
+            btnStart.setEnabled(false);
+        } else {
+            btnStop.setEnabled(false);
+            btnSendMessage.setEnabled(false);
+        }
+
+    }
+
     @Override
     protected void onDestroy() {
         if (mMessageReceiver != null) {
@@ -68,13 +85,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (TextUtils.equals(action, "mqtt.lost")) {
+            if (TextUtils.equals(action, MQTTConstant.ACTION_CONNECT_LOST)) {
                 btnStart.setEnabled(true);
                 btnStop.setEnabled(false);
                 btnSendMessage.setEnabled(false);
                 return;
             }
-            if (TextUtils.equals(action, "mqtt.connect")) {
+            if (TextUtils.equals(action, MQTTConstant.ACTION_CONNECT_SUCCESS)) {
                 btnStart.setEnabled(false);
                 btnStop.setEnabled(true);
                 btnSendMessage.setEnabled(true);
@@ -130,5 +147,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private boolean isServiceRunning() {
+
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+
+        List<ActivityManager.RunningServiceInfo> serviceInfoList = activityManager.getRunningServices(30);
+        if (serviceInfoList == null || serviceInfoList.size() <= 0) {
+            return false;
+        }
+
+        for (int i = 0, length = serviceInfoList.size(); i < length; i++) {
+            if (serviceInfoList.get(i).service.getClassName().equals(AsyncMQTTService.class.getName())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }

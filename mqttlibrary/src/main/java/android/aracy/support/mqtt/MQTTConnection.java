@@ -16,6 +16,8 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 /**
  * MQTT的实例连接类
+ *
+ * @author aracy
  */
 class MQTTConnection {
 

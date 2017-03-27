@@ -7,7 +7,7 @@ import android.net.NetworkInfo;
 import android.text.TextUtils;
 
 /**
- *
+ * MQTT 工具类
  *
  * @author aracy
  * @version [1.0, 2016-07-04]
