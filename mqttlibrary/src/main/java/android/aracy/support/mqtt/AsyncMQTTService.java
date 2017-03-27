@@ -34,6 +34,7 @@ import java.util.concurrent.Executors;
  * @version [1.0, 2016-07-04]
  */
 public class AsyncMQTTService extends Service implements MqttCallback {
+
     public static final String TAG = "AsyncMQTTService";
 
     private static final int MQTT_CONNECT = 1002;
@@ -269,7 +270,6 @@ public class AsyncMQTTService extends Service implements MqttCallback {
             }
         });
         mConnection.close();
-//        mConnection = null;
     }
 
     /***
